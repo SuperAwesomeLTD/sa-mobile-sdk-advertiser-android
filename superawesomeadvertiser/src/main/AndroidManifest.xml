@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tv.superawesomeadvertiser.sdk">
+
+    <application android:allowBackup="true" android:label="@string/app_name"
+        android:supportsRtl="true">
+
+        <receiver
+            android:name="tv.superawesomeadvertiser.sdk.SuperAwesomeAdvertiser"
+            android:exported="false"
+            android:permission="tv.superawesomeadvertiser.sdk.SuperAwesomeSDK">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

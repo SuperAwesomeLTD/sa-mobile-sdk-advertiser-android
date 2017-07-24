@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+version = properties.getProperty("project.version")
+group = properties.getProperty("project.group")
+
+def siteUrl = 'https://github.com/SuperAwesomeLTD/sa-mobile-sdk-advertiser-android'
+def gitUrl = 'https://github.com/SuperAwesomeLTD/sa-mobile-sdk-advertiser-android.git'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    resourcePrefix "superawesome__"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName version
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "SuperAwesomeAdvertiser"
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'SuperAwesome Advertiser Mobile SDK for Android'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'gabrielcoman'
+                        name 'Gabriel Coman'
+                        email 'gabriel.coman@superawesome.tv'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    maven {
+        url  "http://dl.bintray.com/gabrielcoman/maven"
+    }
+}
+
+dependencies {
+    compile 'tv.superawesome.lib.sautils:sautils:0.3.5'
+    compile 'tv.superawesome.lib.sanetwork:sanetwork:0.3.7'
+    compile 'tv.superawesome.lib.sasession:sasession:0.3.1'
+    compile 'tv.superawesome.lib.samodelspace:samodelspace:0.6.9'
+    testCompile 'junit:junit:4.12'
+}

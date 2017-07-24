@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sa-mobile-sdk-advertiser-android.iml" filepath="$PROJECT_DIR$/sa-mobile-sdk-advertiser-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sadvair/sadvair.iml" filepath="$PROJECT_DIR$/sadvair/sadvair.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sadvunity/sadvunity.iml" filepath="$PROJECT_DIR$/sadvunity/sadvunity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superawesomeadvertiser/superawesomeadvertiser.iml" filepath="$PROJECT_DIR$/superawesomeadvertiser/superawesomeadvertiser.iml" />
+    </modules>
+  </component>
+</project>

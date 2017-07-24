@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+version = properties.getProperty("project.version")
+group = properties.getProperty("project.group")
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName version
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven {
+        url  "http://dl.bintray.com/gabrielcoman/maven"
+    }
+}
+
+dependencies {
+    compile project(':superawesomeadvertiser')
+    compile files('libs/unity-classes.jar')
+}
