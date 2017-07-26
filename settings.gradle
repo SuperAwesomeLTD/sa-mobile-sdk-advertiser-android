@@ -1,1 +1,2 @@
 include ':app', ':superawesomeadvertiser', ':sadvunity', ':sadvair'
+project(':superawesomeadvertiser').projectDir = new File('superawesomeadvertiser')
