@@ -1,4 +1,4 @@
-package tv.superawesomeadvertiser.plugins.air;
+package tv.superawesome.plugins.advertiser.air;
 
 import com.adobe.fre.FREContext;
 

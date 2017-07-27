@@ -12,8 +12,8 @@ import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
 import tv.superawesome.lib.sasession.SASession;
 import tv.superawesome.lib.sautils.SAUtils;
-import tv.superawesomeadvertiser.sdk.SuperAwesomeAdvertiser;
-import tv.superawesomeadvertiser.sdk.install.SAOnce;
+import tv.superawesome.sdk.advertiser.SAVerifyInstall;
+import tv.superawesome.sdk.advertiser.install.SAOnce;
 
 public class SACPI_SACPI_Async_Tests extends ActivityInstrumentationTestCase2<MainActivity> {
 
@@ -70,7 +70,7 @@ public class SACPI_SACPI_Async_Tests extends ActivityInstrumentationTestCase2<Ma
             @Override
             public void run() {
 
-                SuperAwesomeAdvertiser.getInstance().handleInstall(getActivity(), session, "tv.superawesome.demoapp", new SuperAwesomeAdvertiser.Interface() {
+                SAVerifyInstall.getInstance().handleInstall(getActivity(), session, "tv.superawesome.demoapp", new SAVerifyInstall.Interface() {
                     @Override
                     public void saDidCountAnInstall(boolean success) {
                         assertTrue(success);
@@ -135,7 +135,7 @@ public class SACPI_SACPI_Async_Tests extends ActivityInstrumentationTestCase2<Ma
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
-                SuperAwesomeAdvertiser.getInstance().handleInstall(getActivity(), session, "some.other.app", new SuperAwesomeAdvertiser.Interface() {
+                SAVerifyInstall.getInstance().handleInstall(getActivity(), session, "some.other.app", new SAVerifyInstall.Interface() {
                     @Override
                     public void saDidCountAnInstall(boolean success) {
                         assertFalse(success);

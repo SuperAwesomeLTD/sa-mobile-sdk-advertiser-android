@@ -1,21 +1,21 @@
-package tv.superawesomeadvertiser.plugins.air;
+package tv.superawesome.plugins.advertiser.air;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 
-import tv.superawesomeadvertiser.sdk.SuperAwesomeAdvertiser;
+import tv.superawesome.sdk.advertiser.SAVerifyInstall;
 
-public class SAdvAIRSuperAwesomeAdvertiser {
+public class SAdvAIRVerifyInstall {
 
     // air CPI name
-    private static final String airName = "SuperAwesomeAdvertiser";
+    private static final String airName = "SAVerifyInstall";
 
     /**
      * Inner class that implements a method to send back a callback to Adobe AIR after a
      * CPI operation on production
      */
-    public static class SuperAwesomeAdvertiserAIRSACPIHandleInstall implements FREFunction {
+    public static class SuperAwesomeAdvertiserAIRSAVerifyInstall implements FREFunction {
         /**
          * Overridden FREFunction "call" method;
          * This needs to be implemented if this class is to correctly implement the FREFunction
@@ -29,7 +29,7 @@ public class SAdvAIRSuperAwesomeAdvertiser {
         @Override
         public FREObject call(final FREContext freContext, FREObject[] freObjects) {
 
-            SuperAwesomeAdvertiser.getInstance().handleInstall(freContext.getActivity(), new SuperAwesomeAdvertiser.Interface() {
+            SAVerifyInstall.getInstance().handleInstall(freContext.getActivity(), new SAVerifyInstall.Interface() {
                 @Override
                 public void saDidCountAnInstall(boolean success) {
                     SAdvAIRCallback.sendCPICallback(freContext, airName, success, "HandleInstall");

@@ -7,7 +7,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import java.util.Arrays;
 import java.util.Collections;
 
-import tv.superawesomeadvertiser.sdk.pack.SAPackage;
+import tv.superawesome.sdk.advertiser.pack.SAPackage;
 
 public class SACPI_SAPackage_Tests extends ApplicationTestCase<Application> {
 

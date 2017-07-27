@@ -2,14 +2,12 @@
  * @Copyright:   SuperAwesome Trading Limited 2017
  * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
  */
-package tv.superawesomeadvertiser.sdk.pack;
+package tv.superawesome.sdk.advertiser.pack;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
 
 import java.util.List;
-
-import tv.superawesome.lib.sautils.SAUtils;
 
 /**
  * This class holds methods that:

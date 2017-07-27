@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import tv.superawesome.lib.sasession.SASession;
 import tv.superawesome.lib.sautils.SAUtils;
-import tv.superawesomeadvertiser.sdk.install.SAInstall;
+import tv.superawesome.sdk.advertiser.install.SAInstall;
 
 public class SACPI_SAInstall_Tests extends ApplicationTestCase<Application> {
 

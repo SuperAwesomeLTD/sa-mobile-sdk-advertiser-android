@@ -2,7 +2,7 @@
  * @Copyright:   SuperAwesome Trading Limited 2017
  * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
  */
-package tv.superawesomeadvertiser.sdk;
+package tv.superawesome.sdk.advertiser;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,11 +12,11 @@ import android.util.Log;
 import java.util.List;
 
 import tv.superawesome.lib.sasession.SASession;
-import tv.superawesomeadvertiser.sdk.install.SAInstall;
-import tv.superawesomeadvertiser.sdk.install.SAOnce;
-import tv.superawesomeadvertiser.sdk.pack.SACheck;
-import tv.superawesomeadvertiser.sdk.pack.SAPackage;
-import tv.superawesomeadvertiser.sdk.referral.SAReceiver;
+import tv.superawesome.sdk.advertiser.install.SAInstall;
+import tv.superawesome.sdk.advertiser.install.SAOnce;
+import tv.superawesome.sdk.advertiser.pack.SACheck;
+import tv.superawesome.sdk.advertiser.pack.SAPackage;
+import tv.superawesome.sdk.advertiser.referral.SAReceiver;
 
 /**
  * Class that extends BroadcastReceiver in order to:
@@ -25,24 +25,24 @@ import tv.superawesomeadvertiser.sdk.referral.SAReceiver;
  * - otherwise, define a method called handleInstall that just sends an /install event to the
  * ad server and returns a callback indicating success or failure
  */
-public class SuperAwesomeAdvertiser extends BroadcastReceiver {
+public class SAVerifyInstall extends BroadcastReceiver {
 
-    // SuperAwesomeAdvertiser instance variable that can be setup only once
-    private static SuperAwesomeAdvertiser instance = new SuperAwesomeAdvertiser();
+    // SAVerifyInstall instance variable that can be setup only once
+    private static SAVerifyInstall instance = new SAVerifyInstall();
 
     /**
      * Private constructor that is only called once
      */
-    public SuperAwesomeAdvertiser() {
+    public SAVerifyInstall() {
         // do nothing
     }
 
     /**
      * Singleton method to get the only existing instance
      *
-     * @return an instance of the SuperAwesomeAdvertiser class
+     * @return an instance of the SAVerifyInstall class
      */
-    public static SuperAwesomeAdvertiser getInstance () {
+    public static SAVerifyInstall getInstance () {
         return instance;
     }
 

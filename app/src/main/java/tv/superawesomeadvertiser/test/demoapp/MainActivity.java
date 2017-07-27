@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import tv.superawesomeadvertiser.sdk.SuperAwesomeAdvertiser;
+import tv.superawesome.sdk.advertiser.SAVerifyInstall;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SuperAwesomeAdvertiser.getInstance().handleInstall(this, new SuperAwesomeAdvertiser.Interface() {
+        SAVerifyInstall.getInstance().handleInstall(this, new SAVerifyInstall.Interface() {
             @Override
             public void saDidCountAnInstall(boolean success) {
-                Log.d("SuperAwesomeAdvertiser", "Handle install result: " + success);
+                Log.d("SAVerifyInstall", "Handle install result: " + success);
             }
         });
 

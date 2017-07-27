@@ -12,7 +12,7 @@ import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
 import tv.superawesome.lib.sasession.SASession;
-import tv.superawesomeadvertiser.sdk.referral.SAReceiver;
+import tv.superawesome.sdk.advertiser.referral.SAReceiver;
 
 public class SACPI_SARefferal_Async_Tests extends ActivityInstrumentationTestCase2<MainActivity> {
 

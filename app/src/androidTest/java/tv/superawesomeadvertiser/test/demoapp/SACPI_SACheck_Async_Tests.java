@@ -12,7 +12,7 @@ import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
 import tv.superawesome.lib.sasession.SASession;
-import tv.superawesomeadvertiser.sdk.pack.SACheck;
+import tv.superawesome.sdk.advertiser.pack.SACheck;
 
 
 public class SACPI_SACheck_Async_Tests extends ActivityInstrumentationTestCase2<MainActivity> {

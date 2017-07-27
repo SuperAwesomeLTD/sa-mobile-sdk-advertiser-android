@@ -2,7 +2,7 @@
  * @Copyright:   SuperAwesome Trading Limited 2017
  * @Author:      Gabriel Coman (gabriel.coman@superawesome.tv)
  */
-package tv.superawesomeadvertiser.sdk.referral;
+package tv.superawesome.sdk.advertiser.referral;
 
 import android.content.Context;
 import android.content.Intent;

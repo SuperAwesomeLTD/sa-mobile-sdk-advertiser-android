@@ -1,4 +1,4 @@
-package tv.superawesomeadvertiser.plugins.air;
+package tv.superawesome.plugins.advertiser.air;
 
 import android.util.Log;
 
@@ -23,7 +23,7 @@ public class SAdvAIRExtensionContext extends FREContext {
         Map<String, FREFunction> functions = new HashMap<String, FREFunction>();
 
         // add all functions
-        functions.put("SuperAwesomeAdvertiserAIRSACPIHandleInstall", new SAdvAIRSuperAwesomeAdvertiser.SuperAwesomeAdvertiserAIRSACPIHandleInstall());
+        functions.put("SuperAwesomeAdvertiserAIRSAVerifyInstall", new SAdvAIRVerifyInstall.SuperAwesomeAdvertiserAIRSAVerifyInstall());
 
         // return the result for the context
         return functions;

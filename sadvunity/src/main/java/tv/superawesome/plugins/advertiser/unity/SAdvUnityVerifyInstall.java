@@ -1,13 +1,13 @@
-package tv.superawesomeadvertiser.plugins.unity;
+package tv.superawesome.plugins.advertiser.unity;
 
 import android.content.Context;
 
-import tv.superawesomeadvertiser.sdk.SuperAwesomeAdvertiser;
+import tv.superawesome.sdk.advertiser.SAVerifyInstall;
 
-public class SAdvUnitySuperAwesomeAdvertiser {
+public class SAdvUnityVerifyInstall {
 
     // CPI name
-    private static final String unityName = "SuperAwesomeAdvertiser";
+    private static final String unityName = "SAVerifyInstall";
 
     /**
      * Method that sends a callback to Unity after a
@@ -15,9 +15,9 @@ public class SAdvUnitySuperAwesomeAdvertiser {
      *
      * @param context current context (activity or fragment)
      */
-    public static void SuperAwesomeAdvertiserUnitySACPIHandleInstall (Context context) {
+    public static void SuperAwesomeAdvertiserUnitySAVerifyInstall (Context context) {
 
-        SuperAwesomeAdvertiser.getInstance().handleInstall(context, new SuperAwesomeAdvertiser.Interface() {
+        SAVerifyInstall.getInstance().handleInstall(context, new SAVerifyInstall.Interface() {
             @Override
             public void saDidCountAnInstall(boolean success) {
                 SAdvUnityCallback.sendCPICallback(unityName, success, "HandleInstall");

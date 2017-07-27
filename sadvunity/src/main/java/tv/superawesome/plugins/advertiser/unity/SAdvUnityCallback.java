@@ -1,4 +1,4 @@
-package tv.superawesomeadvertiser.plugins.unity;
+package tv.superawesome.plugins.advertiser.unity;
 
 import org.json.JSONObject;
 

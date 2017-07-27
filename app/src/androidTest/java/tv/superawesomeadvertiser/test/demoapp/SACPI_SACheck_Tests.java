@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import tv.superawesome.lib.sasession.SASession;
-import tv.superawesomeadvertiser.sdk.pack.SACheck;
+import tv.superawesome.sdk.advertiser.pack.SACheck;
 
 public class SACPI_SACheck_Tests extends ApplicationTestCase<Application> {
 

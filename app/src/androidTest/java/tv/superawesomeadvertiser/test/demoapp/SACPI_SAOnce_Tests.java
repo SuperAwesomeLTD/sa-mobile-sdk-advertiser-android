@@ -4,7 +4,7 @@ import android.app.Application;
 import android.test.ApplicationTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import tv.superawesomeadvertiser.sdk.install.SAOnce;
+import tv.superawesome.sdk.advertiser.install.SAOnce;
 
 public class SACPI_SAOnce_Tests extends ApplicationTestCase<Application> {
 
