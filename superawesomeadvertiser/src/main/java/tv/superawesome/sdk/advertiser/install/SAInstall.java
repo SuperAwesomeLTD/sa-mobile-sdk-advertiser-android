@@ -11,8 +11,9 @@ import org.json.JSONObject;
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
-import tv.superawesome.lib.sasession.SASession;
 import tv.superawesome.lib.sautils.SAUtils;
+import tv.superawesome.sdk.advertiser.utils.SAAdvUtils;
+import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
 /**
  * Class that contains methods to generate all necessary GET request elements for an install
@@ -45,16 +46,15 @@ public class SAInstall {
     /**
      * Get the base install url
      *
-     * @param session current session
      * @return        an url of one of two forms:
      *                - https://ads.superawesome.tv/v2/install
      *                - https://ads.staging.superawesome.tv/v2/install
      */
-    public String getInstallUrl (SASession session) {
-        try {
-            return session.getBaseUrl() + "/install";
-        } catch (Exception e) {
-            return null ;
+    public String getInstallUrl (SAdvConfiguration configuration) {
+        if (configuration == SAdvConfiguration.PRODUCTION) {
+            return "https://ads.superawesome.tv/v2/install";
+        } else {
+            return "https://ads.staging.superawesome.tv/v2/install";
         }
     }
 
@@ -123,13 +123,13 @@ public class SAInstall {
      * @param targetPackageName the package name of the app just being installed
      * @param sourcePackageName the package name of an app that's possible to have generated this
      *                          current app to be installed
-     * @param session           the current session
+     * @param configuration     either staging or production
      * @param listener          an instance of a SAInstallInterface listener to send a callback
      */
-    public void sendInstallEventToServer (String targetPackageName, String sourcePackageName, SASession session, final SAInstallInterface listener) {
+    public void sendInstallEventToServer (String targetPackageName, String sourcePackageName, SAdvConfiguration configuration, final SAInstallInterface listener) {
 
         // get the event url
-        String url = getInstallUrl(session);
+        String url = getInstallUrl(configuration);
 
         // get the associated url query
         JSONObject query = getInstallQuery(targetPackageName, sourcePackageName);

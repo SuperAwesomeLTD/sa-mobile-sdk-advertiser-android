@@ -15,7 +15,7 @@ import java.util.List;
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
-import tv.superawesome.lib.sasession.SASession;
+import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
 /**
  * This class holds some methods that check with the AwesomeAds server to see if there is a
@@ -48,16 +48,16 @@ public class SACheck {
     /**
      * Method that returns the standard check install url
      *
-     * @param session   current session
-     * @return          an url of one of two forms:
-     *                  - https://ads.superawesome.tv/v2/checkinstall
-     *                  - https://ads.staging.superawesome.tv/v2/checkinstall
+     * @param configuration     either staging or production
+     * @return                  an url of one of two forms:
+     *                          - https://ads.superawesome.tv/v2/checkinstall
+     *                          - https://ads.staging.superawesome.tv/v2/checkinstall
      */
-    public String getCheckInstallUrl (SASession session) {
-        try {
-            return session.getBaseUrl() + "/checkinstall";
-        } catch (Exception e) {
-            return null;
+    public String getCheckInstallUrl (SAdvConfiguration configuration) {
+        if (configuration == SAdvConfiguration.PRODUCTION) {
+            return "https://ads.superawesome.tv/v2/checkinstall";
+        } else  {
+            return "https://ads.staging.superawesome.tv/v2/checkinstall";
         }
     }
 
@@ -111,14 +111,14 @@ public class SACheck {
      * Method that asks the AwesomeAds server to return a list of potential package names that
      * could have generated an install from this IP range for a given package name
      *
-     * @param packageName the package name to ask the server about
-     * @param session     current session
-     * @param listener    listener instance
+     * @param packageName   the package name to ask the server about
+     * @param configuration staging or production
+     * @param listener      listener instance
      */
-    public void askServerForPackagesThatGeneratedThisInstall(final String packageName, SASession session, final SACheckInstallInterface listener) {
+    public void askServerForPackagesThatGeneratedThisInstall(final String packageName, SAdvConfiguration configuration, final SACheckInstallInterface listener) {
 
         // create the event url
-        String url = getCheckInstallUrl(session);
+        String url = getCheckInstallUrl(configuration);
 
         // create the additional query
         JSONObject query = getCheckInstallQuery(packageName);

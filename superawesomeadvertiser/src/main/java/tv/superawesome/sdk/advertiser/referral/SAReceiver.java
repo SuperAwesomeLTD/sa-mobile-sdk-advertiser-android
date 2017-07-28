@@ -10,12 +10,11 @@ import android.content.Intent;
 import org.json.JSONObject;
 
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
+import tv.superawesome.lib.samodelspace.saad.SAReferral;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
-import tv.superawesome.lib.sasession.SAConfiguration;
-import tv.superawesome.lib.sasession.SASession;
 import tv.superawesome.lib.sautils.SAUtils;
-import tv.superawesome.lib.samodelspace.saad.SAReferral;
+import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
 /**
  * Class that contains methods to handle when the app receives referral data from the google
@@ -122,14 +121,11 @@ public class SAReceiver {
      * @param data  an instance of SAReferralData
      * @return      a new configured session instance
      */
-    public SASession getReferralInstallSession (SAReferral data) {
-        SASession session = new SASession(context);
+    public SAdvConfiguration getReferralInstallConfiguration (SAReferral data) {
         try {
-            SAConfiguration configuration = SAConfiguration.fromValue(data.configuration);
-            session.setConfiguration(configuration);
-            return session;
+            return SAdvConfiguration.fromValue(data.configuration);
         } catch (Exception e) {
-            return session;
+            return SAdvConfiguration.PRODUCTION;
         }
     }
 
@@ -141,10 +137,11 @@ public class SAReceiver {
      */
     public String getReferralUrl (SAReferral data) {
 
-        SASession session = getReferralInstallSession(data);
+        SAdvConfiguration configuration = getReferralInstallConfiguration(data);
+        String baseUrl = configuration == SAdvConfiguration.PRODUCTION ? "https://ads.superawesome.tv/v2" : "https://ads.staging.superawesome.tv/v2";
         JSONObject refEventDict = getReferralCustomData(data);
 
-        return session.getBaseUrl() + "/event?" + SAUtils.formGetQueryFromDict(refEventDict);
+        return baseUrl + "/event?" + SAUtils.formGetQueryFromDict(refEventDict);
     }
 
     /**

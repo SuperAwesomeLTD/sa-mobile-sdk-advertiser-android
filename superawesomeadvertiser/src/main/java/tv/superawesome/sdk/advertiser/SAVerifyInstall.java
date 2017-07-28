@@ -11,12 +11,13 @@ import android.util.Log;
 
 import java.util.List;
 
-import tv.superawesome.lib.sasession.SASession;
 import tv.superawesome.sdk.advertiser.install.SAInstall;
 import tv.superawesome.sdk.advertiser.install.SAOnce;
 import tv.superawesome.sdk.advertiser.pack.SACheck;
 import tv.superawesome.sdk.advertiser.pack.SAPackage;
 import tv.superawesome.sdk.advertiser.referral.SAReceiver;
+import tv.superawesome.sdk.advertiser.utils.SAAdvUtils;
+import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
 /**
  * Class that extends BroadcastReceiver in order to:
@@ -58,9 +59,7 @@ public class SAVerifyInstall extends BroadcastReceiver {
      * @param listener  return callback listener
      */
     public void handleInstall(final Context context, final Interface listener) {
-        SASession session = new SASession(context);
-        session.setConfigurationProduction();
-        handleInstall(context, session, listener);
+        handleInstall(context, SAdvConfiguration.PRODUCTION, listener);
     }
 
     /**
@@ -69,12 +68,12 @@ public class SAVerifyInstall extends BroadcastReceiver {
      * - whatever the answer, send an /install event, with an additional "sourceBundle" parameter
      * attached.
      *
-     * @param context   current context (fragment or activity)
-     * @param session   current session to be based on
-     * @param listener  return callback listener
+     * @param context       current context (fragment or activity)
+     * @param configuration either staging or production
+     * @param listener      return callback listener
      */
-    public void handleInstall(final Context context, final SASession session, final Interface listener) {
-        handleInstall(context, session, session.getPackageName(), listener);
+    public void handleInstall(final Context context, final SAdvConfiguration configuration, final Interface listener) {
+        handleInstall(context, configuration, SAAdvUtils.getPackageName(context), listener);
     }
 
     /**
@@ -83,12 +82,12 @@ public class SAVerifyInstall extends BroadcastReceiver {
      * - whatever the answer, send an /install event, with an additional "sourceBundle" parameter
      * attached.
      *
-     * @param context   current context (fragment or activity)
-     * @param session   current session to be based on
-     * @param target    the target you want to check & send an install for
-     * @param listener  return callback listener
+     * @param context       current context (fragment or activity)
+     * @param configuration either staging or production
+     * @param target        the target you want to check & send an install for
+     * @param listener      return callback listener
      */
-    public void handleInstall(final Context context, final SASession session, final String target, final Interface listener) {
+    public void handleInstall(final Context context, final SAdvConfiguration configuration, final String target, final Interface listener) {
 
         final Interface _listener = listener != null ? listener : new Interface() {
             @Override public void saDidCountAnInstall(boolean success) {}};
@@ -108,7 +107,7 @@ public class SAVerifyInstall extends BroadcastReceiver {
             // find out if the AwesomeAds server thinks there are a number of potential
             // apps (package names) that might've generated the install from this
             // device (actually truncated IP range)
-            check.askServerForPackagesThatGeneratedThisInstall(target, session, new SACheck.SACheckInstallInterface() {
+            check.askServerForPackagesThatGeneratedThisInstall(target, configuration, new SACheck.SACheckInstallInterface() {
                 @Override
                 public void saDidGetListOfPackagesToCheck(List<String> packages) {
 
@@ -119,7 +118,7 @@ public class SAVerifyInstall extends BroadcastReceiver {
 
                     // and whatever the outcome, send an install event to the server
                     // and await for a response
-                    install.sendInstallEventToServer(target, source, session, new SAInstall.SAInstallInterface() {
+                    install.sendInstallEventToServer(target, source, configuration, new SAInstall.SAInstallInterface() {
                         @Override
                         public void saDidCountAnInstall(boolean success) {
                             once.setCPISent();
