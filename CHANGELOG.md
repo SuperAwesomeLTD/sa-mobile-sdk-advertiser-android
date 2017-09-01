@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+1.0.4
+ - Updated network and modelspace dependencies
+
 1.0.3
  - Removed dependencies on SASession to be alike the iOS Advertiser SDK
  - Refactored some code
