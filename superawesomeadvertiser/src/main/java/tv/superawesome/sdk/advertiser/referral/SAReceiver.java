@@ -13,7 +13,7 @@ import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.samodelspace.saad.SAReferral;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
-import tv.superawesome.lib.sautils.SAUtils;
+import tv.superawesome.sdk.advertiser.utils.SAAdvUtils;
 import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
 /**
@@ -102,9 +102,9 @@ public class SAReceiver {
         try {
             return SAJsonParser.newObject(
                     // "sdkVersion", SuperAwesome.getInstance().getSDKVersion(),
-                    "rnd", SAUtils.getCacheBuster(),
-                    "ct", SAUtils.getNetworkConnectivity(context).ordinal(),
-                    "data", SAUtils.encodeDictAsJsonDict(SAJsonParser.newObject(
+                    "rnd", SAAdvUtils.getCacheBuster(),
+                    "ct", SAAdvUtils.getNetworkConnectivity(context).ordinal(),
+                    "data", SAAdvUtils.encodeDictAsJsonDict(SAJsonParser.newObject(
                             "placement", data.placementId,
                             "line_item", data.lineItemId,
                             "creative", data.creativeId,
@@ -141,7 +141,7 @@ public class SAReceiver {
         String baseUrl = configuration == SAdvConfiguration.PRODUCTION ? "https://ads.superawesome.tv/v2" : "https://ads.staging.superawesome.tv/v2";
         JSONObject refEventDict = getReferralCustomData(data);
 
-        return baseUrl + "/event?" + SAUtils.formGetQueryFromDict(refEventDict);
+        return baseUrl + "/event?" + SAAdvUtils.formGetQueryFromDict(refEventDict);
     }
 
     /**
@@ -152,7 +152,7 @@ public class SAReceiver {
     public JSONObject getReferralHeader () {
         return SAJsonParser.newObject(
                 "Content-Type", "application/json",
-                "User-Agent", SAUtils.getUserAgent(context));
+                "User-Agent", SAAdvUtils.getUserAgent(context));
     }
 
     /**

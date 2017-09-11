@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+1.0.5
+ - Partially moving it to have no dependencies
+
 1.0.4
  - Updated network and modelspace dependencies
 

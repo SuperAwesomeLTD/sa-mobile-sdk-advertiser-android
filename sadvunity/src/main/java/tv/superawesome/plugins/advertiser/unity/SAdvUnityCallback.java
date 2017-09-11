@@ -4,9 +4,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.InvocationTargetException;
 
-import tv.superawesome.lib.sajsonparser.SAJsonParser;
-import tv.superawesome.lib.sautils.SAUtils;
-
 public class SAdvUnityCallback {
 
     /**
@@ -18,7 +15,7 @@ public class SAdvUnityCallback {
     public static void sendToUnity (String unityAd, JSONObject data) {
 
         // don't do anything if class is not available
-        if (!SAUtils.isClassAvailable("com.unity3d.player.UnityPlayer")) return;
+        if (!isClassAvailable("com.unity3d.player.UnityPlayer")) return;
 
         String payload = data.toString();
 
@@ -47,10 +44,27 @@ public class SAdvUnityCallback {
      */
     public static void sendCPICallback (String unityAd, boolean success, String callback) {
 
-        JSONObject data = SAJsonParser.newObject("success", "" + success + "",
-                "type", "sacallback_" + callback);
+        JSONObject data = new JSONObject();
+        try {
+            data.put("success", "" + success + "");
+            data.put("type", "sacallback_" + callback);
+        } catch (Exception e) {
+            // do nothing
+        }
 
         sendToUnity(unityAd, data);
 
+    }
+
+    private static boolean isClassAvailable (String className) {
+        boolean driverAvailable = true;
+
+        try {
+            Class.forName(className);
+        } catch (NullPointerException | ClassNotFoundException var3) {
+            driverAvailable = false;
+        }
+
+        return driverAvailable;
     }
 }

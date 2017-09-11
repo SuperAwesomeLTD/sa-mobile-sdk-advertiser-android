@@ -84,7 +84,6 @@ repositories {
 }
 
 dependencies {
-    compile 'tv.superawesome.lib.sautils:sautils:0.3.5'
     compile 'tv.superawesome.lib.sanetwork:sanetwork:0.3.8'
     compile 'tv.superawesome.lib.samodelspace:samodelspace:0.7.1'
     testCompile 'junit:junit:4.12'

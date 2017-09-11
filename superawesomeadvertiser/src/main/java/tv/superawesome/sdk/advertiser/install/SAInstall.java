@@ -11,7 +11,6 @@ import org.json.JSONObject;
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
-import tv.superawesome.lib.sautils.SAUtils;
 import tv.superawesome.sdk.advertiser.utils.SAAdvUtils;
 import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
@@ -94,7 +93,7 @@ public class SAInstall {
     public JSONObject getInstallHeader () {
         return SAJsonParser.newObject(
                 "Content-Type", "application/json",
-                "User-Agent", SAUtils.getUserAgent(context));
+                "User-Agent", SAAdvUtils.getUserAgent(context));
     }
 
     /**

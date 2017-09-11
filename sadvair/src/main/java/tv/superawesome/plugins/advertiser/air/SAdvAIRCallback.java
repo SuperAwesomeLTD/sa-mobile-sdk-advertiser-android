@@ -4,8 +4,6 @@ import com.adobe.fre.FREContext;
 
 import org.json.JSONObject;
 
-import tv.superawesome.lib.sajsonparser.SAJsonParser;
-
 public class SAdvAIRCallback {
 
     /**
@@ -33,10 +31,15 @@ public class SAdvAIRCallback {
      */
     public static void sendCPICallback (FREContext context, String name, boolean success, String callback) {
 
-        JSONObject data = SAJsonParser.newObject(
-                "name", name,
-                "success", success,
-                "callback", callback);
+        JSONObject data = new JSONObject();
+        try {
+            data.put("name", name);
+            data.put("success", success);
+            data.put("callback", callback);
+        } catch (Exception e) {
+            // do nothing
+        }
+
         sendToAIR(context, data);
 
     }
