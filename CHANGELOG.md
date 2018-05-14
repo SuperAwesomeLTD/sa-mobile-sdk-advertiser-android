@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+2.0.0
+ - Updated dependencies to latest available
+
 1.0.5
  - Partially moving it to have no dependencies
 
