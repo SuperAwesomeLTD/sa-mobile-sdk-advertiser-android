@@ -12,13 +12,13 @@ def siteUrl = 'https://github.com/SuperAwesomeLTD/sa-mobile-sdk-advertiser-andro
 def gitUrl = 'https://github.com/SuperAwesomeLTD/sa-mobile-sdk-advertiser-android.git'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     resourcePrefix "superawesome__"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName version
     }
@@ -84,7 +84,7 @@ repositories {
 }
 
 dependencies {
-    compile 'tv.superawesome.lib.sanetwork:sanetwork:0.3.8'
-    compile 'tv.superawesome.lib.samodelspace:samodelspace:0.7.1'
+    compile 'tv.superawesome.lib.sanetwork:sanetwork:1.2.0'
+    compile 'tv.superawesome.lib.samodelspace:samodelspace:1.0.1'
     testCompile 'junit:junit:4.12'
 }

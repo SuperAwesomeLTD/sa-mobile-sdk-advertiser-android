@@ -10,7 +10,7 @@ import android.content.Intent;
 import org.json.JSONObject;
 
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
-import tv.superawesome.lib.samodelspace.saad.SAReferral;
+import tv.superawesome.lib.samodelspace.referral.SAReferral;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
 import tv.superawesome.sdk.advertiser.utils.SAAdvUtils;
@@ -176,7 +176,7 @@ public class SAReceiver {
             JSONObject header = getReferralHeader();
 
             // send the network request
-            network.sendGET(context, url, new JSONObject(), header, new SANetworkInterface() {
+            network.sendGET(url, new JSONObject(), header, new SANetworkInterface() {
                 @Override
                 public void saDidGetResponse(int status, String payload, boolean success) {
                     if (listener != null) {

@@ -11,7 +11,6 @@ import java.util.concurrent.CountDownLatch;
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
-import tv.superawesome.lib.sasession.SASession;
 import tv.superawesome.lib.sautils.SAUtils;
 import tv.superawesome.sdk.advertiser.install.SAInstall;
 
@@ -52,7 +51,7 @@ public class SACPI_SAInstall_Async_Tests extends ActivityInstrumentationTestCase
             @Override
             public void run() {
 
-                network.sendGET(getActivity(), clickUrl, clickQuery, clickHeader, new SANetworkInterface() {
+                network.sendGET(clickUrl, clickQuery, clickHeader, new SANetworkInterface() {
                     @Override
                     public void saDidGetResponse(int i, String s, boolean b) {
                         Log.d("SuperAwesome", s);

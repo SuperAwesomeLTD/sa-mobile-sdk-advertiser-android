@@ -5,6 +5,7 @@
 package tv.superawesome.sdk.advertiser.pack;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ import java.util.List;
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
+import tv.superawesome.lib.sautils.SAUtils;
 import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
 /**
@@ -118,15 +120,17 @@ public class SACheck {
     public void askServerForPackagesThatGeneratedThisInstall(final String packageName, SAdvConfiguration configuration, final SACheckInstallInterface listener) {
 
         // create the event url
-        String url = getCheckInstallUrl(configuration);
+        final String url = getCheckInstallUrl(configuration);
 
         // create the additional query
-        JSONObject query = getCheckInstallQuery(packageName);
+        final JSONObject query = getCheckInstallQuery(packageName);
 
         // send a get request to the ad server
-        network.sendGET(context, url, query, new JSONObject(), new SANetworkInterface() {
+        network.sendGET(url, query, new JSONObject(), new SANetworkInterface() {
             @Override
             public void saDidGetResponse(int status, String payload, boolean success) {
+
+                Log.d("SuperAwesome", success + " | " + status + " | " + url + "?" + SAUtils.formGetQueryFromDict(query));
 
                 if (listener != null) {
                     listener.saDidGetListOfPackagesToCheck(parseServerResponse(payload));

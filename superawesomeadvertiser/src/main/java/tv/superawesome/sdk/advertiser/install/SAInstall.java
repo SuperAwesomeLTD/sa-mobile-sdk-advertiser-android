@@ -5,12 +5,14 @@
 package tv.superawesome.sdk.advertiser.install;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONObject;
 
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
+import tv.superawesome.lib.sautils.SAUtils;
 import tv.superawesome.sdk.advertiser.utils.SAAdvUtils;
 import tv.superawesome.sdk.advertiser.utils.SAdvConfiguration;
 
@@ -128,18 +130,21 @@ public class SAInstall {
     public void sendInstallEventToServer (String targetPackageName, String sourcePackageName, SAdvConfiguration configuration, final SAInstallInterface listener) {
 
         // get the event url
-        String url = getInstallUrl(configuration);
+        final String url = getInstallUrl(configuration);
 
         // get the associated url query
-        JSONObject query = getInstallQuery(targetPackageName, sourcePackageName);
+        final JSONObject query = getInstallQuery(targetPackageName, sourcePackageName);
 
         // get the install header
         JSONObject header = getInstallHeader();
 
         // send the GET request and await a result
-        network.sendGET(context, url, query, header, new SANetworkInterface() {
+        network.sendGET(url, query, header, new SANetworkInterface() {
             @Override
             public void saDidGetResponse(int status, String payload, boolean success) {
+
+                Log.d("SuperAwesome", success + " | " + status + " | " + url + "?" + SAUtils.formGetQueryFromDict(query));
+
                 if (listener != null) {
                     listener.saDidCountAnInstall(parseServerResponse(payload));
                 }

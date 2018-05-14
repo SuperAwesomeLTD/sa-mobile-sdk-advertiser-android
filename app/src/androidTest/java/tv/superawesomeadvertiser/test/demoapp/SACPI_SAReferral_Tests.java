@@ -7,9 +7,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 import org.json.JSONObject;
 
-import tv.superawesome.lib.samodelspace.saad.SAReferral;
-import tv.superawesome.lib.sasession.SAConfiguration;
-import tv.superawesome.lib.sasession.SASession;
+import tv.superawesome.lib.samodelspace.referral.SAReferral;
 import tv.superawesome.sdk.advertiser.referral.SAReceiver;
 
 public class SACPI_SAReferral_Tests extends ApplicationTestCase<Application> {
