@@ -5,7 +5,7 @@ description: Add the SDK through Gradle
 
 # Add the SDK through Gradle
 
-The simplest way of adding the Android Publisher SDK to your Android Studio project is to download the AAR library through Gradle.
+The simplest way of adding the Android Advertiser SDK to your Android Studio project is to download the AAR library through Gradle.
 
 The first step is to include the following Maven repository in your module’s <strong>build.gradle</strong> file (usually the file under MyApplication/app/):
 
