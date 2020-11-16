@@ -4,9 +4,10 @@ buildscript {
     repositories {
         jcenter()
         maven { url "https://maven.google.com" }
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta6'
+        classpath 'com.android.tools.build:gradle:4.1.0-alpha04'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
 

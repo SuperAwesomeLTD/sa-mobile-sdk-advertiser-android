@@ -84,7 +84,7 @@ repositories {
 }
 
 dependencies {
-    compile 'tv.superawesome.lib.sanetwork:sanetwork:1.2.0'
-    compile 'tv.superawesome.lib.samodelspace:samodelspace:1.0.1'
+    api 'tv.superawesome.lib.sanetwork:sanetwork:1.2.0'
+    api 'tv.superawesome.lib.samodelspace:samodelspace:1.0.1'
     testCompile 'junit:junit:4.12'
 }
